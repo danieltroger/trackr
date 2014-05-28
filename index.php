@@ -1,3 +1,6 @@
 <?php
-print_r(get_defined_vars()); //best beginning evar
+header("Content-type: text/plain");
+print_r($_SERVER); //best beginning evar
+$date = date("m-d-Y H:i:s ");// best date evar
+echo "\n\n{$date}";
 ?>
