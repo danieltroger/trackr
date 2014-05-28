@@ -11,11 +11,13 @@ $ua = "Firefox v" . $uae[3];
 elseif(strpos($ua,"Safari/") !== false)
 {
 $sv = explode(" ",$uae[3]);
-if(strpos($ua,"iPhone OS") !== false)
+if((strpos($ua,"iPhone OS") !== false) || (strpos($ua,"iPad") !== false))
 {
 $ios = explode(" ",$uae[1]);
-$ios = str_replace("_",".",$ios[5]);
-$ua = "MobileSafari v{$sv[0]} on iOS {$ios}";
+$device = substr($ios[1],1,-1) . "\n";
+$key = fpoint($ios);
+$ios = str_replace("_",".",$ios[$key+1]);
+$ua = "MobileSafari v{$sv[0]}, iOS {$ios} on an {$device}";
 }
 else
 {
@@ -24,5 +26,14 @@ $ua = "Safari v" . $sv[0];
 }
 file_put_contents("a.txt",print_r($_SERVER,1));
 echo "{$date} {$_SERVER['REMOTE_ADDR']}:{$_SERVER['SERVER_PORT']} {$_SERVER['SERVER_PROTOCOL']} {$_SERVER['REQUEST_METHOD']} {$_SERVER['REQUEST_URI']} {$ua}";
-
+function fpoint($a)
+{
+foreach($a as $b => $c)
+{
+if($c == "OS")
+{
+return $b;
+}
+}
+}
 ?>
