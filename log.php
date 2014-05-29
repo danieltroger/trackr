@@ -24,6 +24,7 @@ $ua = "Safari v" . $sv[0];
 }
 file_put_contents("a.txt",print_r($_SERVER,1));
 file_put_contents("log.txt","{$date} {$_SERVER['REMOTE_ADDR']}:{$_SERVER['SERVER_PORT']} {$_SERVER['SERVER_PROTOCOL']} {$_SERVER['REQUEST_METHOD']} {$_SERVER['REQUEST_URI']} {$ua}\n" . file_get_contents("log.txt"));;
+file_put_contents("total.txt",file_get_contents("total.txt") +1);
 function fpoint($a)
 {
 foreach($a as $b => $c)
