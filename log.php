@@ -9,7 +9,7 @@ $ua = "Firefox v" . $uae[3];
 elseif(strpos($ua,"Safari/") !== false)
 {
 $sv = explode(" ",$uae[3]);
-if((strpos($ua,"iPhone OS") !== false) || (strpos($ua,"iPad") !== false))
+if((strpos($ua,"iPhone OS") !== false) || (strpos($ua,"iPad") !== false) || (strpos($ua,"iPod") !== false))
 {
 $ios = explode(" ",$uae[1]);
 $device = substr($ios[1],1,-1) . "\n";
